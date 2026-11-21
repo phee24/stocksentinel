@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StockSentinel — tokenized-stock watchdog on Base</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 2rem auto; max-width: 1080px; padding: 0 1rem; line-height: 1.45; }
+  h1 { margin-bottom: 0.2rem; }
+  .muted { opacity: 0.65; } .small { font-size: 0.82em; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0 2rem; font-size: 0.95em; }
+  th, td { border-bottom: 1px solid rgba(127,127,127,0.35); padding: 0.45rem 0.5rem; text-align: left; vertical-align: top; }
+  th { font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.75; }
+  .badge { border-radius: 0.6em; padding: 0.05em 0.5em; font-size: 0.78em; font-weight: 600; }
+  .badge.stale { background: #b58900; color: #fff; }
+  .badge.disc { background: #0052ff; color: #fff; }
+  tr.disc-mid td { background: rgba(0,82,255,0.07); }
+  tr.disc-high td { background: rgba(200,30,30,0.10); }
+  ul.signals { list-style: none; padding: 0; }
+  ul.signals li { padding: 0.4rem 0; border-bottom: 1px dashed rgba(127,127,127,0.3); }
+  footer { margin-top: 2.5rem; font-size: 0.85em; }
+</style>
+</head>
+<body>
+<header>
+  <h1>StockSentinel</h1>
+  <p class="muted">Autonomous watchdog for tokenized stocks (B20) on Base — DEX price vs Chainlink NAV dislocations, corporate-action radar (ERC-8056 events + multiplier diffs), supply tracking.<br>
+  Snapshot: 2026-11-21 08:23:15 UTC · Universe: 415 tokenized stocks · Monitored: 10 tickers (10 with a DEX price, 10 with NAV)</p>
+</header>
+
+<h2>Monitored tickers</h2>
+<table>
+  <thead><tr><th>Ticker</th><th>DEX price</th><th>NAV (Chainlink)</th><th>Δ DEX vs NAV</th><th>Supply (tokens)</th><th>Multiplier</th><th>Pool depth</th></tr></thead>
+  <tbody>
+<tr class="disc-mid"><td><strong>MSTR</strong> <span class="muted">MSTRc</span></td><td>$76.12</td><td>$79.37<br><span class="muted small">2026-11-21 00:08 UTC</span></td><td>-4.09% <span class="badge disc">signal</span></td><td>25,253.98</td><td>1</td><td>$488,520.14<br><span class="muted small">aerodrome-cl</span></td></tr>
+<tr class="disc-mid"><td><strong>SNDK</strong> <span class="muted">SNDKc</span></td><td>$635.6</td><td>$649.44<br><span class="muted small">2026-11-20 23:38 UTC</span></td><td>-2.13% <span class="badge disc">signal</span></td><td>3,330.04</td><td>8</td><td>$1,369,825.36<br><span class="muted small">aerodrome-cl</span></td></tr>
+<tr class=""><td><strong>NVDA</strong> <span class="muted">NVDAc</span></td><td>$128.32</td><td>$129.82<br><span class="muted small">2026-11-20 23:42 UTC</span></td><td>-1.16%</td><td>62,019.74</td><td>1.0005379395763694</td><td>$1,347,629.28<br><span class="muted small">aerodrome-cl</span></td></tr>
+<tr class=""><td><strong>AMZN</strong> <span class="muted">AMZNc</span></td><td>$249.26</td><td>$250.88<br><span class="muted small">2026-11-21 00:23 UTC</span></td><td>-0.65%</td><td>10,411.5</td><td>1</td><td>$1,451,138.15<br><span class="muted small">aerodrome-cl</span></td></tr>
+<tr class=""><td><strong>MSFT</strong> <span class="muted">MSFTc</span></td><td>$486.05</td><td>$489.2<br><span class="muted small">2026-11-21 00:11 UTC</span></td><td>-0.64%</td><td>2,702.71</td><td>1</td><td>$462,189.06<br><span class="muted small">aerodrome-cl</span></td></tr>
+<tr class=""><td><strong>META</strong> <span class="muted">METAc</span></td><td>$564.64</td><td>$567.18<br><span class="muted small">2026-11-20 21:15 UTC</span></td><td>-0.45%</td><td>9,037.51</td><td>1.0003137922895982</td><td>$729,153.96<br><span class="muted small">aerodrome-cl</span></td></tr>
+<tr class=""><td><strong>GOOGL</strong> <span class="muted">GOOGLc</span></td><td>$268.66</td><td>$269.72<br><span class="muted small">2026-11-20 21:42 UTC</span></td><td>-0.39%</td><td>37,248.3</td><td>1.0003771186767842</td><td>$1,447,773.4<br><span class="muted small">aerodrome-cl</span></td></tr>
+<tr class=""><td><strong>SPCX</strong> <span class="muted">SPCXc</span></td><td>$129.58</td><td>$129.34<br><span class="muted small">2026-11-20 21:52 UTC</span></td><td>+0.18%</td><td>30,116.61</td><td>1</td><td>$942,473.62<br><span class="muted small">aerodrome-cl</span></td></tr>
+<tr class=""><td><strong>TSLA</strong> <span class="muted">TSLAc</span></td><td>$350.83</td><td>$350.45<br><span class="muted small">2026-11-20 22:43 UTC</span></td><td>+0.11%</td><td>6,527.32</td><td>1</td><td>$440,627.78<br><span class="muted small">aerodrome-cl</span></td></tr>
+<tr class=""><td><strong>AAPL</strong> <span class="muted">AAPLc</span></td><td>$345.26</td><td>$345.3<br><span class="muted small">2026-11-20 23:12 UTC</span></td><td>-0.01%</td><td>6,103.12</td><td>1.0005003893019802</td><td>$408,111.01<br><span class="muted small">aerodrome-cl</span></td></tr>
+  </tbody>
+</table>
+
+<h2>Latest signals &amp; events (5)</h2>
+<ul class="signals">
+<li><span class="muted small">2026-11-21 08:23 UTC</span> — <strong>SNDK</strong> dislocation — DEX discount -2.13% vs NAV (DEX $635.60 · NAV $649.44)</li>
+<li><span class="muted small">2026-11-21 08:23 UTC</span> — <strong>MSTR</strong> dislocation — DEX discount -4.09% vs NAV (DEX $76.12 · NAV $79.37)</li>
+<li><span class="muted small">2026-11-19 21:53 UTC</span> — <strong>SNDK</strong> announcement — issuer announcement onchain: &quot;8-for-1 Stock Split&quot; (id 4d449eba-9206-4c35-8c1e-921c20e864d5) · https://api.coinbase.com/v1/tokenized-stocks/corporate-actions/4d449eba-9206-4c35-8c1e-921c20e864d5 · tx 0x3f1dbf96…</li>
+<li><span class="muted small">2026-11-19 21:53 UTC</span> — <strong>SNDK</strong> multiplier_scheduled — multiplier 1 -&gt; 8 recorded onchain (ERC-8056), effective 2026-11-20T05:00:00.000Z · tx 0x3f1dbf96… (effective 2026-11-20T05:00:00.000Z)</li>
+<li><span class="muted small">2026-11-19 01:36 UTC</span> — <strong>NVDA</strong> announcement — issuer announcement onchain: &quot;Cash Dividend&quot; (id 4f332b80-3d7e-4f13-ad0d-0cb4cdc1a442:pre) · https://api.coinbase.com/v1/tokenized-stocks/corporate-actions/4f332b80-3d7e-4f13-ad0d-0cb4cdc1a442 · tx 0x0a6c0fa3…</li>
+</ul>
+
+<footer class="muted">
+  
+  <p>Research/monitoring only. Not financial advice. No trading is executed for anyone. Data: official Tokenized Stocks API + Chainlink feeds + Aerodrome pools on Base mainnet; corporate-action events from B20 token precompiles (ERC-8056).</p>
+</footer>
+</body>
+</html>

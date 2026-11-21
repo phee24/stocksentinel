@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-11-21T08:28:30.959Z",
+  "agent": "StockSentinel",
+  "network": "base-mainnet (data) + base-sepolia (anchors)",
+  "coverage": {
+    "tokensInUniverse": 415,
+    "tickersMonitored": 10,
+    "withDexPrice": 10,
+    "withNav": 10
+  },
+  "dislocations": [
+    {
+      "ticker": "MSTR",
+      "navUsd": 79.37,
+      "dexUsd": 76.12487096695405,
+      "pct": -4.088609087874455,
+      "direction": "discount",
+      "navStale": false,
+      "at": "2026-11-21T08:23:20.359Z"
+    },
+    {
+      "ticker": "SNDK",
+      "navUsd": 649.44,
+      "dexUsd": 635.5996956785738,
+      "pct": -2.131113624264949,
+      "direction": "discount",
+      "navStale": false,
+      "at": "2026-11-21T08:23:21.203Z"
+    }
+  ],
+  "corporateActions": [
+    {
+      "ticker": "NVDA",
+      "kind": "announcement",
+      "detail": "issuer announcement onchain: \"Cash Dividend\" (id 4f332b80-3d7e-4f13-ad0d-0cb4cdc1a442:pre) · https://api.coinbase.com/v1/tokenized-stocks/corporate-actions/4f332b80-3d7e-4f13-ad0d-0cb4cdc1a442 · tx 0x0a6c0fa3…",
+      "at": "2026-11-19T01:36:42.000Z"
+    },
+    {
+      "ticker": "SNDK",
+      "kind": "multiplier_scheduled",
+      "detail": "multiplier 1 -> 8 recorded onchain (ERC-8056), effective 2026-11-20T05:00:00.000Z · tx 0x3f1dbf96…",
+      "effectiveAt": "2026-11-20T05:00:00.000Z",
+      "at": "2026-11-19T21:53:25.000Z"
+    },
+    {
+      "ticker": "SNDK",
+      "kind": "announcement",
+      "detail": "issuer announcement onchain: \"8-for-1 Stock Split\" (id 4d449eba-9206-4c35-8c1e-921c20e864d5) · https://api.coinbase.com/v1/tokenized-stocks/corporate-actions/4d449eba-9206-4c35-8c1e-921c20e864d5 · tx 0x3f1dbf96…",
+      "at": "2026-11-19T21:53:25.000Z"
+    }
+  ]
+}
